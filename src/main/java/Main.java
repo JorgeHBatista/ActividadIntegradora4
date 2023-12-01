@@ -16,5 +16,6 @@ public class Main {
         for (Film film2023 : films2023) {
             consoleLogger.write(film2023.toString());
         }
+        consoleLogger.toJenkinsfile(films2023);
     }
 }

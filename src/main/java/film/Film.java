@@ -49,10 +49,10 @@ public class Film {
 
     @Override
     public String toString() {
-        return  "Film: " + this.getTitle() +
-                "\nSpectators per room: " + this.getSpectators() +
-                "\nRooms broadcast: " + this.getRoomsBroadcast() +
-                "\nGross profit: " + this.getGrossProfit() +
-                "\nNet profit: " + this.getNetProfit() + "\n";
+        return  "Film {" + this.getTitle() +
+                ", Spectators per room: " + this.getSpectators() +
+                ", Rooms broadcast: " + this.getRoomsBroadcast() +
+                ", Gross profit: " + this.getGrossProfit() +
+                ", Net profit: " + this.getNetProfit() + "}";
     }
 }

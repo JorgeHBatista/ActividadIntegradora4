@@ -1,11 +1,13 @@
 package ports;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import film.Film;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 // Esta sería la vista en un MVC
 public class ConsoleLogger {
@@ -75,5 +77,30 @@ public class ConsoleLogger {
         }
 
         return number;
+    }
+
+    public void toJenkinsfile(ArrayList<Film> films) {
+        String jenkinsfileData = "pipeline {\n" +
+                "    agent any\n" +
+                "\n" +
+                "    stages {\n" +
+                "        stage('Show films data') {\n" +
+                "            steps {\n" +
+                "               script {\n";
+        for (Film film : films) {
+            jenkinsfileData += "                   echo '" + film.toString() + "'\n";
+        }
+        jenkinsfileData +=
+                "               }\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        System.out.println(jenkinsfileData);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Jenkinsfile"))) {
+            writer.write(jenkinsfileData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
